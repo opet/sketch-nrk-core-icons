@@ -10,26 +10,31 @@ function onRun(context){
   svgImporter.prepareToImportFromURL(svgURL);
   var svgLayer = svgImporter.importAsLayer();
   svgLayer.setName(svgName);
+  if (doc.currentPage().currentArtboard() == null) {
+    doc.currentPage().addLayers([svgLayer]);
+  }  else {
+    doc.currentPage().currentArtboard().addLayers([svgLayer]);
+  }
 
-  context.document.currentPage().addLayers([svgLayer]);
+  //log(context.document.currentPage().name);
 
   //scale icon
   var frame = [svgLayer frame],
       width = [frame width],
       height = [frame height],
       dim = 30;
-  var aspect = width/height;
+
   if (width>height) {
+    var aspect = width/height;
     [frame setWidth:(dim)];
     [frame setHeight:(dim/aspect)];
   } else {
-    [frame setWidth:(dim)];
-    [frame setHeight:(dim*aspect)];
+    var aspect = height/width;
+    [frame setWidth:(dim/aspect)];
+    [frame setHeight:(dim)];
   }
 
 
-  log(svgLayer);
-  //svgLayer setWidth:(100);
-  //svgLayer.setHeight(100);
+
 
 }
