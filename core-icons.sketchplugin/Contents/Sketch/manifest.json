@@ -1,0 +1,18 @@
+{
+  "name" : "Load core-icons",
+  "identifier" : "com.sketchapp.opet.nrk-core-icons",
+  "version" : "0.1",
+  "appcast" : "",
+  "description" : "Imports icons from nrk core-icons",
+  "authorEmail" : "pettersen.oyvind@gmail.com",
+  "author" : "Øyvind Pettersen",
+  "commands" : [
+    {
+      "script" : "load-core-icons.js",
+      "handler" : "onRun",
+      "shortcut" : "",
+      "name" : "Load core-icons",
+      "identifier" : "core-icons"
+    },
+  ]
+}
